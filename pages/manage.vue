@@ -31,9 +31,16 @@ async function adjustPoints(user: any, delta: number) {
   })
 }
 
+function getCurrentTimeAsNumber() {
+  const now = new Date()
+  const hours = now.getHours().toString().padStart(2, '0')
+  const minutes = now.getMinutes().toString().padStart(2, '0')
+  return `${hours}${minutes}`
+}
+
 const pin = ref([])
 
-const registered = computed(() => pin.value.join("-") === "1-2-3-4-5")
+const registered = computed(() => pin.value.join("") === getCurrentTimeAsNumber())
 
 </script>
 
@@ -54,7 +61,7 @@ const registered = computed(() => pin.value.join("-") === "1-2-3-4-5")
     </section>
     </component>
     <component class="flex items-center justify-center min-h-screen px-4" v-else>
-      <UPinInput v-model="pin"></UPinInput>
+      <UPinInput length="4" v-model="pin"></UPinInput>
     </component>
   </div>
 </template>
