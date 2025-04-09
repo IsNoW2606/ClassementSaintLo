@@ -1,9 +1,12 @@
 <script setup lang="ts">
 
-import {useRealtimeUsers} from "~/composables/useRealtimeUsers";
 import UserButton from "~/components/UserButton.vue";
 
-const { users } = await useRealtimeUsers()
+const users = ref([])
+
+onMounted(async () => {
+  users.value = await $fetch('api/users')
+})
 
 const filter = ref("")
 
