@@ -61,7 +61,7 @@ const registered = computed(() => pin.value.join("") === getCurrentTimeAsNumber(
     </section>
     </component>
     <component class="flex items-center justify-center min-h-screen px-4" v-else>
-      <UPinInput length="4" v-model="pin"></UPinInput>
+      <UPinInput type="number" length="4" v-model="pin"></UPinInput>
     </component>
   </div>
 </template>
