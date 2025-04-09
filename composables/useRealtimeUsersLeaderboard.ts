@@ -4,7 +4,7 @@ import PocketBase from 'pocketbase'
 const pb = new PocketBase('https://pocketbase-db-young-glitter-2631.fly.dev')
 pb.autoCancellation(false)
 
-export async function useRealtimeUsers() {
+export async function useRealtimeUsersLeaderboard() {
     const users = ref([])
 
     async function fetchFromAPI() {

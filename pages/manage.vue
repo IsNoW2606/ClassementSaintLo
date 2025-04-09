@@ -1,12 +1,10 @@
 <script setup lang="ts">
 
 import UserButton from "~/components/UserButton.vue";
+import {useRealtimeUsersLeaderboard} from "~/composables/useRealtimeUsersLeaderboard";
+import {useRealtimeUsersButton} from "~/composables/useRealtimeUsersButton";
 
-const users = ref([])
-
-onMounted(async () => {
-  users.value = await $fetch('api/users')
-})
+const { users } = await useRealtimeUsersButton()
 
 const filter = ref("")
 
@@ -27,8 +25,6 @@ async function adjustPoints(user: any, delta: number) {
     method: 'PATCH',
     body: { delta }
   })
-
-  users.value = await $fetch('api/users')
 }
 
 function getCurrentTimeAsNumber() {

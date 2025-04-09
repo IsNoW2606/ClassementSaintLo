@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
-import {useRealtimeUsers} from "~/composables/useRealtimeUsers";
+import {useRealtimeUsersLeaderboard} from "~/composables/useRealtimeUsersLeaderboard";
 
-const { users } = await useRealtimeUsers()
+const { users } = await useRealtimeUsersLeaderboard()
 
 </script>
 
