@@ -23,12 +23,12 @@ async function adjustPoints(user: any, delta: number) {
     return
   }
 
-  user.points += delta
-
   await $fetch(`/api/users/${user.id}`, {
     method: 'PATCH',
     body: { delta }
   })
+
+  users.value = await $fetch('api/users')
 }
 
 function getCurrentTimeAsNumber() {
