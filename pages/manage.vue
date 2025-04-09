@@ -16,6 +16,10 @@ const filteredUser = computed(() => {
 })
 
 async function adjustPoints(user: any, delta: number) {
+  if (user.points + delta < 0) {
+    return
+  }
+
   await $fetch(`/api/users/${user.id}`, {
     method: 'PATCH',
     body: { delta }
