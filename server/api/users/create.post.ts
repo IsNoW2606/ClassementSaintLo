@@ -2,6 +2,7 @@ import {defineEventHandler, readMultipartFormData} from 'h3'
 import PocketBase from 'pocketbase'
 
 const pb = new PocketBase('https://pocketbase-db-young-glitter-2631.fly.dev')
+pb.autoCancellation(false)
 
 export default defineEventHandler(async (event) => {
     const formData = await readMultipartFormData(event)

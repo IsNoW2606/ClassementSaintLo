@@ -2,6 +2,7 @@ import { defineEventHandler, readBody, getRouterParam } from 'h3'
 import PocketBase from 'pocketbase'
 
 const pb = new PocketBase('https://pocketbase-db-young-glitter-2631.fly.dev') // Remplace par ton URL si hébergé
+pb.autoCancellation(false)
 
 export default defineEventHandler(async (event) => {
     const id = getRouterParam(event, 'id')
