@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     const name = formData?.find(f => f.name === 'name')?.data?.toString()
     const file = formData?.find(f => f.name === 'avatar')
 
-    if (!name || !file?.data) {
+    if (!name || !file || !file.filename || !file.data?.length) {
         throw createError({ statusCode: 400, statusMessage: 'Nom et photo requis' })
     }
 

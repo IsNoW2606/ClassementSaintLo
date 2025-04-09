@@ -31,10 +31,15 @@ async function adjustPoints(user: any, delta: number) {
   })
 }
 
+const pin = ref([])
+
+const registered = computed(() => pin.value.join("-") === "1-2-3-4-5")
+
 </script>
 
 <template>
   <div class="p-2">
+    <component v-if="registered">
     <header class="mb-2">
       <UInput icon="i-lucide-search" size="md" class="w-full" type="text" v-model="filter" variant="outline" placeholder="Search..." />
     </header>
@@ -47,5 +52,9 @@ async function adjustPoints(user: any, delta: number) {
             @remove="adjustPoints(user, -1)"/>
       </component>
     </section>
+    </component>
+    <component class="flex items-center justify-center min-h-screen px-4" v-else>
+      <UPinInput v-model="pin"></UPinInput>
+    </component>
   </div>
 </template>
