@@ -5,7 +5,14 @@ const success = ref(false)
 const name = ref("")
 const avatar = ref()
 
+const inSubmit = ref(false);
+
 async function onSubmit() {
+  if (inSubmit.value) {
+    return
+  }
+
+  inSubmit.value = true;
   try {
     const formData = new FormData()
     formData.append('name', name.value)
@@ -20,6 +27,8 @@ async function onSubmit() {
   } catch (error) {
     alert('❌ Erreur lors de la création de votre compte')
   }
+
+  inSubmit.value = false;
 }
 
 </script>
