@@ -25,7 +25,7 @@ async function onSubmit() {
 
     navigateTo("/")
   } catch (error) {
-    alert('❌ Erreur lors de la création de votre compte')
+    alert('Le nom et la photo sont obligatoires')
   }
 
   inSubmit.value = false;
